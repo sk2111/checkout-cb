@@ -10,7 +10,7 @@ const NavigationButton = ({
   gotoNextPage,
   submit,
 }) => {
-  const firstPage = pageList[0];
+  const [firstPage] = pageList;
   const lastPage = pageList[pageList.length - 1];
 
   return (
