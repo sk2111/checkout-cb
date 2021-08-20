@@ -1,15 +1,20 @@
+//styles
+import styles from './Checkout.module.css';
 //components
 import RenderView from 'components/RenderView/RenderView';
 import AccountInfo from 'containers/AccountInfo/AccountInfo';
 import BillingInfo from 'containers/BillingInfo/BillingInfo';
 import ShippingInfo from 'containers/ShippingInfo/ShippingInfo';
 import PaymentInfo from 'containers/PaymentInfo/PaymentInfo';
+//assests
+import { ReactComponent as SuccessSvg } from 'assets/successTick.svg';
 //navigation
 import {
   ACCOUNT_PAGE,
   BILLING_PAGE,
   SHIPPING_PAGE,
   PAYMENT_PAGE,
+  SIGNUP_SUCCESS,
 } from 'utilities/navigation';
 
 const Checkout = ({ currentPage, information, handleChange }) => {
@@ -62,6 +67,13 @@ const Checkout = ({ currentPage, information, handleChange }) => {
           paymentInfo={paymentInfo}
           onInputChange={handlePaymentInfoChange}
         />
+      </RenderView>
+      <RenderView renderIfTrue={currentPage === SIGNUP_SUCCESS}>
+        <div className={styles.successContainer}>
+          <h4 className={styles.successTitle}>Success !</h4>
+          <SuccessSvg className={styles.successSvg} />
+          <p className={styles.successMsg}>You have Successfully Signed Up</p>
+        </div>
       </RenderView>
     </>
   );

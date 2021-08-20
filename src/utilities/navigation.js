@@ -2,6 +2,8 @@ export const ACCOUNT_PAGE = 'account';
 export const BILLING_PAGE = 'billing';
 export const SHIPPING_PAGE = 'shipping';
 export const PAYMENT_PAGE = 'payment';
+export const SIGNUP_SUCCESS = 'signupSuccess';
+
 export const PAGE_LIST = [
   ACCOUNT_PAGE,
   BILLING_PAGE,
