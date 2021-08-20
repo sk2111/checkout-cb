@@ -10,28 +10,33 @@ export const PAYMENT_PAGE = 'paymentInfo';
 export const SIGNUP_SUCCESS = 'signupSuccess';
 
 export const navHeaderList = [
-  { id: 1, 
-    title: 'Account', 
-    isActive: false, 
-    Icon: AccountSvg 
+  {
+    id: 1,
+    title: 'Account',
+    isActive: true,
+    Icon: AccountSvg,
+    page: ACCOUNT_PAGE,
   },
   {
     id: 2,
     title: 'Billing Info',
     isActive: false,
     Icon: BillingSvg,
+    page: BILLING_PAGE,
   },
   {
     id: 3,
     title: 'Shipping Info',
     isActive: false,
     Icon: ShipppingSvg,
+    page: SHIPPING_PAGE,
   },
   {
     id: 4,
     title: 'Payment',
     isActive: false,
     Icon: PaymentSvg,
+    page: PAYMENT_PAGE,
   },
 ];
 
@@ -50,6 +55,15 @@ const navigationMap = {
 };
 
 export const [startingPage] = navButtonList;
+
+export const getActiveNavHeaderList = (currentPage) => {
+  let isActive = true;
+  return navHeaderList.map((navItem) => {
+    navItem.isActive = isActive;
+    if (navItem.page === currentPage) isActive = false;
+    return navItem;
+  });
+};
 
 export const getNextPage = (currPage) => {
   return navigationMap[currPage].next;

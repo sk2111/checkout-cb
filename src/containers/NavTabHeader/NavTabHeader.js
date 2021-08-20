@@ -3,13 +3,15 @@ import styles from './NavTabHeader.module.css';
 //components
 import NavTabItem from 'components/NavTabItem/NavTabItem';
 //navigation
-import { navHeaderList } from 'utilities/navigation';
+import { getActiveNavHeaderList } from 'utilities/navigation';
 
-const NavTabHeader = () => {
+const NavTabHeader = ({ currentPage }) => {
+  const activeNavList = getActiveNavHeaderList(currentPage);
+
   return (
     <div className={styles.navTabContainer}>
-      {navHeaderList.map((item) => (
-        <NavTabItem key={item.id} {...item} />
+      {activeNavList.map((navItem) => (
+        <NavTabItem key={navItem.id} {...navItem} />
       ))}
     </div>
   );

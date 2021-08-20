@@ -60,7 +60,7 @@ const App = () => {
     <div className={styles.appContainer}>
       <h1 className={styles.checkoutTitle}>Checkout Information</h1>
       <div className={styles.navTabContainer}>
-        <NavTabHeader />
+        <NavTabHeader currentPage={currentPage} />
       </div>
       <div className={styles.checkoutContainer}>
         <Checkout
