@@ -14,7 +14,11 @@ import {
   initPaymentInfo,
 } from './appStateDefault';
 //utilities
-import { isValidFormData, ERROR_MESSAGE } from 'utilities/validator';
+import {
+  isValidFormData,
+  isSomeFieldsValid,
+  ERROR_MESSAGE,
+} from 'utilities/validator';
 import {
   navButtonList,
   startingPage,
@@ -32,6 +36,12 @@ const App = () => {
   const [errorMsg, setErrorMsg] = useState('');
 
   const formData = { accountInfo, billingInfo, shippingInfo, paymentInfo };
+
+  const handleNavHeaderClick = (targetPage) => {
+    if (isSomeFieldsValid(formData[targetPage])) {
+      setCurrentPage(targetPage);
+    }
+  };
 
   const gotoPreviousPage = () => {
     const prevPage = getPreviousPage(currentPage);
@@ -60,7 +70,10 @@ const App = () => {
     <div className={styles.appContainer}>
       <h1 className={styles.checkoutTitle}>Checkout Information</h1>
       <div className={styles.navTabContainer}>
-        <NavTabHeader currentPage={currentPage} />
+        <NavTabHeader
+          currentPage={currentPage}
+          handleClick={handleNavHeaderClick}
+        />
       </div>
       <div className={styles.checkoutContainer}>
         <Checkout
