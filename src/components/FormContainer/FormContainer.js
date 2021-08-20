@@ -5,7 +5,7 @@ const FormContainer = ({ title, children }) => {
   return (
     <div className={styles.formContainer}>
       <h2 className={styles.formTitle}>{title}</h2>
-      {children}
+      <form className={styles.form}>{children}</form>
     </div>
   );
 };
