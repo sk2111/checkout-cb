@@ -33,12 +33,15 @@ const App = () => {
   const formData = { accountInfo, billingInfo, shippingInfo, paymentInfo };
 
   const gotoPreviousPage = () => {
-    setCurrentPage(getPreviousPage(currentPage));
+    const prevPage = getPreviousPage(currentPage);
+    setCurrentPage(prevPage);
+    if (isValidFormData(formData[prevPage])) {
+      setErrorMsg('');
+    }
   };
 
   const gotoNextPage = () => {
     if (isValidFormData(formData[currentPage])) {
-      setErrorMsg('');
       return setCurrentPage(getNextPage(currentPage));
     }
     setErrorMsg(ERROR_MESSAGE);
@@ -47,7 +50,6 @@ const App = () => {
   const submitForm = () => {
     if (isValidFormData(formData[currentPage])) {
       console.log('Network API POST', formData);
-      setErrorMsg('');
       return setCurrentPage(SIGNUP_SUCCESS);
     }
     setErrorMsg(ERROR_MESSAGE);
@@ -65,7 +67,7 @@ const App = () => {
             setBillingInfo,
             setShippingInfo,
             setPaymentInfo,
-            setErrorMsg
+            setErrorMsg,
           }}
         />
       </div>
