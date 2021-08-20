@@ -69,7 +69,7 @@ const App = () => {
 
   return (
     <div className={styles.appContainer}>
-      <h1 className={styles.checkoutTitle}>Checkout Information</h1>
+      <h1 className={styles.checkoutTitle}>Chargebee Checkout</h1>
       <div className={styles.navTabContainer}>
         <NavTabHeader
           currentPage={currentPage}
