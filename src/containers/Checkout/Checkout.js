@@ -19,26 +19,35 @@ import {
 
 const Checkout = ({ currentPage, information, handleChange }) => {
   const { accountInfo, billingInfo, shippingInfo, paymentInfo } = information;
-  const { setAccountInfo, setBillingInfo, setShippingInfo, setPaymentInfo } =
-    handleChange;
+  const {
+    setAccountInfo,
+    setBillingInfo,
+    setShippingInfo,
+    setPaymentInfo,
+    setErrorMsg,
+  } = handleChange;
 
   const handleAccountInfoChange = (e) => {
     const { name, value } = e.target;
+    setErrorMsg('');
     setAccountInfo({ ...accountInfo, [name]: value });
   };
 
   const handleBillingInfoChange = (e) => {
     const { name, value } = e.target;
+    setErrorMsg('');
     setBillingInfo({ ...billingInfo, [name]: value });
   };
 
   const handleShippingInfoChange = (e) => {
     const { name, value } = e.target;
+    setErrorMsg('');
     setShippingInfo({ ...shippingInfo, [name]: value });
   };
 
   const handlePaymentInfoChange = (e) => {
     const { name, value } = e.target;
+    setErrorMsg('');
     setPaymentInfo({ ...paymentInfo, [name]: value });
   };
 
