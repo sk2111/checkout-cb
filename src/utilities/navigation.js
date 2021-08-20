@@ -11,12 +11,16 @@ export const PAGE_LIST = [
 
 export const INIT_PAGE = PAGE_LIST[0];
 
+const getCurrentPageIdx = (currPage) => {
+  return PAGE_LIST.findIndex((page) => page === currPage);
+};
+
 export const getNextPage = (currPage) => {
-  const currIdx = PAGE_LIST.findIndex((page) => page === currPage);
+  const currIdx = getCurrentPageIdx(currPage);
   return PAGE_LIST[currIdx + 1] ?? PAGE_LIST[0];
 };
 
 export const getPreviousPage = (currPage) => {
-  const currIdx = PAGE_LIST.findIndex((page) => page === currPage);
+  const currIdx = getCurrentPageIdx(currPage);
   return PAGE_LIST[currIdx - 1] ?? PAGE_LIST[PAGE_LIST.length - 1];
 };
