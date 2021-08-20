@@ -1,5 +1,6 @@
 .inputContainer {
   margin: 18px 0;
+  width: 100%;
 }
 .formLabel {
   color: #727272;
@@ -19,7 +20,7 @@
   height: 40px;
   margin-top: 5px;
   padding-left: 12px;
-  width: 320px;
+  width: 100%;
 }
 .formInput:focus {
   border: 1px solid #3367d6;
