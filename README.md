@@ -15,3 +15,4 @@ Features not implemented due to time constraints
 2) Generic error message is shown when form field is empty which can be made better by showing 
    customized error message depending on form fields
 3) Only basic level of css is implemeted due to time constraints
+4) UI responsive for mobile specific devices is not implemented 
