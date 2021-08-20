@@ -2,6 +2,7 @@ import { useState } from 'react';
 //styles
 import styles from './App.module.css';
 //components
+import NavTabHeader from 'containers/NavTabHeader/NavTabHeader';
 import NavigationButton from 'components/NavigationButton/NavigationButton';
 import Checkout from 'containers/Checkout/Checkout';
 import RenderView from 'components/RenderView/RenderView';
@@ -15,8 +16,8 @@ import {
 //utilities
 import { isValidFormData, ERROR_MESSAGE } from 'utilities/validator';
 import {
-  PAGE_LIST,
-  INIT_PAGE,
+  navButtonList,
+  startingPage,
   getNextPage,
   getPreviousPage,
   SIGNUP_SUCCESS,
@@ -27,7 +28,7 @@ const App = () => {
   const [billingInfo, setBillingInfo] = useState(initBillingInfo);
   const [shippingInfo, setShippingInfo] = useState(initShippingInfo);
   const [paymentInfo, setPaymentInfo] = useState(initPaymentInfo);
-  const [currentPage, setCurrentPage] = useState(INIT_PAGE);
+  const [currentPage, setCurrentPage] = useState(startingPage);
   const [errorMsg, setErrorMsg] = useState('');
 
   const formData = { accountInfo, billingInfo, shippingInfo, paymentInfo };
@@ -58,6 +59,9 @@ const App = () => {
   return (
     <div className={styles.appContainer}>
       <h1 className={styles.checkoutTitle}>Checkout Information</h1>
+      <div className={styles.navTabContainer}>
+        <NavTabHeader />
+      </div>
       <div className={styles.checkoutContainer}>
         <Checkout
           currentPage={currentPage}
@@ -75,7 +79,7 @@ const App = () => {
       <div className={styles.appBtnContainer}>
         <RenderView renderIfTrue={currentPage !== SIGNUP_SUCCESS}>
           <NavigationButton
-            pageList={PAGE_LIST}
+            pageList={navButtonList}
             currentPage={currentPage}
             gotoPreviousPage={gotoPreviousPage}
             gotoNextPage={gotoNextPage}
