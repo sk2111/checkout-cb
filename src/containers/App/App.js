@@ -17,6 +17,7 @@ import {
 import {
   isValidFormData,
   isSomeFieldsValid,
+  checkAllFields,
   ERROR_MESSAGE,
 } from 'utilities/validator';
 import {
@@ -59,7 +60,7 @@ const App = () => {
   };
 
   const submitForm = () => {
-    if (isValidFormData(formData[currentPage])) {
+    if (checkAllFields(formData)) {
       console.log('Mock Network API POST', formData);
       return setCurrentPage(SIGNUP_SUCCESS);
     }
