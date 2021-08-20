@@ -1,0 +1,11 @@
+.formContainer {
+  border: 1px solid #cdcdcd;
+  border-radius: 8px;
+  box-shadow: 0 0 5px 1px #cdcdcd;
+  padding: 25px;
+  width: 450px;
+}
+.formTitle {
+  text-align: center;
+  font-size: 21px;
+}
