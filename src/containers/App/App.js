@@ -49,7 +49,7 @@ const App = () => {
 
   const submitForm = () => {
     if (isValidFormData(formData[currentPage])) {
-      console.log('Network API POST', formData);
+      console.log('Mock Network API POST', formData);
       return setCurrentPage(SIGNUP_SUCCESS);
     }
     setErrorMsg(ERROR_MESSAGE);
