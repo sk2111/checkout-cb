@@ -4,6 +4,7 @@ import styles from './App.module.css';
 //components
 import NavigationButton from 'components/NavigationButton/NavigationButton';
 import Checkout from 'containers/Checkout/Checkout';
+import RenderView from 'components/RenderView/RenderView';
 //init state
 import {
   initAccountInfo,
@@ -11,12 +12,14 @@ import {
   initShippingInfo,
   initPaymentInfo,
 } from './appStateDefault';
-//navigation
+//utilities
+import { isValidFormData, ERROR_MESSAGE } from 'utilities/validator';
 import {
   PAGE_LIST,
   INIT_PAGE,
   getNextPage,
   getPreviousPage,
+  SIGNUP_SUCCESS,
 } from 'utilities/navigation';
 
 const App = () => {
@@ -25,13 +28,29 @@ const App = () => {
   const [shippingInfo, setShippingInfo] = useState(initShippingInfo);
   const [paymentInfo, setPaymentInfo] = useState(initPaymentInfo);
   const [currentPage, setCurrentPage] = useState(INIT_PAGE);
+  const [errorMsg, setErrorMsg] = useState('');
+
+  const formData = { accountInfo, billingInfo, shippingInfo, paymentInfo };
 
   const gotoPreviousPage = () => {
     setCurrentPage(getPreviousPage(currentPage));
   };
 
   const gotoNextPage = () => {
-    setCurrentPage(getNextPage(currentPage));
+    if (isValidFormData(formData[currentPage])) {
+      setErrorMsg('');
+      return setCurrentPage(getNextPage(currentPage));
+    }
+    setErrorMsg(ERROR_MESSAGE);
+  };
+
+  const submitForm = () => {
+    if (isValidFormData(formData[currentPage])) {
+      console.log('Network API POST', formData);
+      setErrorMsg('');
+      return setCurrentPage(SIGNUP_SUCCESS);
+    }
+    setErrorMsg(ERROR_MESSAGE);
   };
 
   return (
@@ -46,16 +65,21 @@ const App = () => {
             setBillingInfo,
             setShippingInfo,
             setPaymentInfo,
+            setErrorMsg
           }}
         />
       </div>
+      <p className={styles.errorMsg}>{errorMsg}</p>
       <div className={styles.appBtnContainer}>
-        <NavigationButton
-          pageList={PAGE_LIST}
-          currentPage={currentPage}
-          gotoPreviousPage={gotoPreviousPage}
-          gotoNextPage={gotoNextPage}
-        />
+        <RenderView renderIfTrue={currentPage !== SIGNUP_SUCCESS}>
+          <NavigationButton
+            pageList={PAGE_LIST}
+            currentPage={currentPage}
+            gotoPreviousPage={gotoPreviousPage}
+            gotoNextPage={gotoNextPage}
+            submit={submitForm}
+          />
+        </RenderView>
       </div>
     </div>
   );
