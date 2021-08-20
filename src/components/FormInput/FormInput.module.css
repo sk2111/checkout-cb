@@ -1,0 +1,27 @@
+.inputContainer {
+  margin: 15px 0;
+}
+.formLabel {
+  color: #727272;
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+.required {
+  color: #ff0000;
+  display: inline-block;
+  margin-left: 4px;
+}
+.formInput {
+  border: 1px solid #cdcdcd;
+  border-radius: 3px;
+  font-size: 14px;
+  height: 40px;
+  margin-top: 10px;
+  padding-left: 12px;
+  width: 320px;
+}
+.formInput:focus {
+  border: 1px solid #3367d6;
+  outline: none;
+}
