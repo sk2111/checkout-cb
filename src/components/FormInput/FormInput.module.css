@@ -1,5 +1,5 @@
 .inputContainer {
-  margin: 15px 0;
+  margin: 18px 0;
 }
 .formLabel {
   color: #727272;
@@ -17,7 +17,7 @@
   border-radius: 3px;
   font-size: 14px;
   height: 40px;
-  margin-top: 10px;
+  margin-top: 5px;
   padding-left: 12px;
   width: 320px;
 }
