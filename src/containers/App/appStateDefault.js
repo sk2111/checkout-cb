@@ -10,13 +10,14 @@ export const initBillingInfo = {
   country: '',
 };
 export const initShippingInfo = {
-  mobileNumber: '',
-  address: '',
+  mobile: '',
+  street: '',
+  state: '',
   city: '',
   country: '',
 };
 export const initPaymentInfo = {
-  cardNumber: '',
+  card: '',
   expiry: '',
   cvv: '',
 };

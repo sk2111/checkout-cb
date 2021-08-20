@@ -5,7 +5,7 @@ import FormContainer from 'components/FormContainer/FormContainer';
 import FormInput from 'components/FormInput/FormInput';
 
 const ShippingInfo = ({ shippingInfo, onInputChange }) => {
-  const { mobileNumber, address, city, country } = shippingInfo;
+  const { mobile, street, state, city, country } = shippingInfo;
 
   return (
     <div className={styles.shippingContainer}>
@@ -13,17 +13,25 @@ const ShippingInfo = ({ shippingInfo, onInputChange }) => {
         <FormInput
           label='Mobile Number'
           type='number'
-          name='mobileNumber'
+          name='mobile'
           required={true}
-          value={mobileNumber}
+          value={mobile}
           onChange={onInputChange}
         />
         <FormInput
-          label='Address'
+          label='Street'
           type='text'
-          name='address'
+          name='street'
           required={true}
-          value={address}
+          value={street}
+          onChange={onInputChange}
+        />
+        <FormInput
+          label='State'
+          type='text'
+          name='state'
+          required={true}
+          value={state}
           onChange={onInputChange}
         />
         <FormInput
