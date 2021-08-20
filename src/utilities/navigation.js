@@ -9,7 +9,7 @@ export const PAGE_LIST = [
   PAYMENT_PAGE,
 ];
 
-export const START_PAGE = PAGE_LIST[0];
+export const INIT_PAGE = PAGE_LIST[0];
 
 export const getNextPage = (currPage) => {
   const currIdx = PAGE_LIST.findIndex((page) => page === currPage);
