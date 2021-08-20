@@ -1,10 +1,10 @@
 //styles
-import styles from './Account.module.css';
+import styles from './AccountInfo.module.css';
 //components
-import FormContainer from '../../components/FormContainer/FormContainer';
-import FormInput from '../../components/FormInput/FormInput';
+import FormContainer from 'components/FormContainer/FormContainer';
+import FormInput from 'components/FormInput/FormInput';
 
-const Account = ({ accountInfo, onInputChange }) => {
+const AccountInfo = ({ accountInfo, onInputChange }) => {
   const { customerId, customerEmail, customerName } = accountInfo;
 
   return (
@@ -39,4 +39,4 @@ const Account = ({ accountInfo, onInputChange }) => {
   );
 };
 
-export default Account;
+export default AccountInfo;

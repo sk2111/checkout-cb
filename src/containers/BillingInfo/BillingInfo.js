@@ -1,8 +1,8 @@
 //styles
 import styles from './BillingInfo.module.css';
 //components
-import FormContainer from '../../components/FormContainer/FormContainer';
-import FormInput from '../../components/FormInput/FormInput';
+import FormContainer from 'components/FormContainer/FormContainer';
+import FormInput from 'components/FormInput/FormInput';
 
 const BillingInfo = ({ billingInfo, onInputChange }) => {
   const { street, state, city, country } = billingInfo;
