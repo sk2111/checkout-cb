@@ -3,16 +3,19 @@ import RenderView from 'components/RenderView/RenderView';
 import AccountInfo from 'containers/AccountInfo/AccountInfo';
 import BillingInfo from 'containers/BillingInfo/BillingInfo';
 import ShippingInfo from 'containers/ShippingInfo/ShippingInfo';
+import PaymentInfo from 'containers/PaymentInfo/PaymentInfo';
 //navigation
 import {
   ACCOUNT_PAGE,
   BILLING_PAGE,
   SHIPPING_PAGE,
+  PAYMENT_PAGE,
 } from 'utilities/navigation';
 
 const Checkout = ({ currentPage, information, handleChange }) => {
-  const { accountInfo, billingInfo, shippingInfo } = information;
-  const { setAccountInfo, setBillingInfo, setShippingInfo } = handleChange;
+  const { accountInfo, billingInfo, shippingInfo, paymentInfo } = information;
+  const { setAccountInfo, setBillingInfo, setShippingInfo, setPaymentInfo } =
+    handleChange;
 
   const handleAccountInfoChange = (e) => {
     const { name, value } = e.target;
@@ -27,6 +30,11 @@ const Checkout = ({ currentPage, information, handleChange }) => {
   const handleShippingInfoChange = (e) => {
     const { name, value } = e.target;
     setShippingInfo({ ...shippingInfo, [name]: value });
+  };
+
+  const handlePaymentInfoChange = (e) => {
+    const { name, value } = e.target;
+    setPaymentInfo({ ...paymentInfo, [name]: value });
   };
 
   return (
@@ -47,6 +55,12 @@ const Checkout = ({ currentPage, information, handleChange }) => {
         <ShippingInfo
           shippingInfo={shippingInfo}
           onInputChange={handleShippingInfoChange}
+        />
+      </RenderView>
+      <RenderView renderIfTrue={currentPage === PAYMENT_PAGE}>
+        <PaymentInfo
+          paymentInfo={paymentInfo}
+          onInputChange={handlePaymentInfoChange}
         />
       </RenderView>
     </>
