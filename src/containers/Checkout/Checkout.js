@@ -27,28 +27,26 @@ const Checkout = ({ currentPage, information, handleChange }) => {
     setErrorMsg,
   } = handleChange;
 
-  const handleAccountInfoChange = (e) => {
+  const updateInfo = (e, prevData, setInfo) => {
     const { name, value } = e.target;
     setErrorMsg('');
-    setAccountInfo({ ...accountInfo, [name]: value });
+    setInfo({ ...prevData, [name]: value });
+  };
+
+  const handleAccountInfoChange = (e) => {
+    updateInfo(e, accountInfo, setAccountInfo);
   };
 
   const handleBillingInfoChange = (e) => {
-    const { name, value } = e.target;
-    setErrorMsg('');
-    setBillingInfo({ ...billingInfo, [name]: value });
+    updateInfo(e, billingInfo, setBillingInfo);
   };
 
   const handleShippingInfoChange = (e) => {
-    const { name, value } = e.target;
-    setErrorMsg('');
-    setShippingInfo({ ...shippingInfo, [name]: value });
+    updateInfo(e, shippingInfo, setShippingInfo);
   };
 
   const handlePaymentInfoChange = (e) => {
-    const { name, value } = e.target;
-    setErrorMsg('');
-    setPaymentInfo({ ...paymentInfo, [name]: value });
+    updateInfo(e, paymentInfo, setPaymentInfo);
   };
 
   return (
